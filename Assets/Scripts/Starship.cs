@@ -25,20 +25,22 @@ public class Starship : MonoBehaviour
     private void SetDestination(Transform target)
     {
         Vector3 direction = target.position - transform.position;
-        Quaternion toRotation = Quaternion.LookRotation(direction);
-        _rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation, toRotation, _rotaionSpeed * Time.deltaTime));
+        Quaternion toRotation = Quaternion.LookRotation(direction.normalized);
+        _rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation, toRotation, _rotaionSpeed * Time.fixedDeltaTime));
     }
     
     private void Start()
     {
-        if (target)
+        if (target !)
         {
             SetDestination(target);
         }
         else
         {
             Debug.LogError($"У корабля {name} не выбрана цель: {target}");
-            Destroy(this);
+            //Destroy(this);
+            ChooseRandomTarget();
+            Debug.Log($"У корабля {name} теперь цель: {target}");
         }
 
         _speed *= Random.Range(0.9f, 1.1f);
@@ -54,5 +56,14 @@ public class Starship : MonoBehaviour
         }*/
         SetDestination(target);
         _rigidbody.AddForce(transform.forward * _speed, ForceMode.Force);
+    }
+
+    private void ChooseRandomTarget()
+    {
+        target = ShipsObserver.Instance.starships[Random.Range(0, ShipsObserver.Instance.starships.Capacity)].transform;
+        if (target == gameObject.transform)
+        {
+            ChooseRandomTarget();
+        }
     }
 }

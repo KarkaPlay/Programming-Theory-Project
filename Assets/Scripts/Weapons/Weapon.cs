@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public abstract class Weapon : MonoBehaviour
 {
@@ -10,9 +11,9 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected Transform _firePoint = null;
     [SerializeField] protected Vector3 _target = Vector3.negativeInfinity;
 
-    protected bool canShoot = true;
+    protected bool canShoot = false;
 
-    public abstract void Shoot();
+    public abstract void Shoot(); // ABSTRACTION
     
     public void StartShooting()
     {
@@ -27,7 +28,7 @@ public abstract class Weapon : MonoBehaviour
         StopCoroutine(nameof(ShootingRoutine));
     }
 
-    public IEnumerator ShootingRoutine()
+    public virtual IEnumerator ShootingRoutine()
     {
         while (canShoot)
         {
@@ -46,5 +47,7 @@ public abstract class Weapon : MonoBehaviour
                            $"fireDelay: {_fireDelay}, firePoint: {_firePoint}, target: {_target}");
             Destroy(this);
         }
+
+        _fireDelay *= Random.Range(0.8f, 1.2f);
     }
 }

@@ -10,7 +10,7 @@ public class WeaponTrigger : MonoBehaviour
 
     private int _shipsInRange;
 
-    private int ShipsInRange
+    private int ShipsInRange // ENCAPSULATION
     {
         get => _shipsInRange;
         set => _shipsInRange = value < 0 ? 0 : value;
@@ -23,21 +23,21 @@ public class WeaponTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        ShipsInRange++;
-        Debug.Log($"Trigger Entered by {other.gameObject.name}, objects: {_shipsInRange}");
-        if (ShipsInRange == 1)
-        {
+        //ShipsInRange++;
+        //Debug.Log($"Trigger Entered by {other.gameObject.name}, objects: {_shipsInRange}");
+        //if (ShipsInRange == 1)
+        //{
             _weapon.StartShooting();
-        }
+        //}
     }
 
     private void OnTriggerExit(Collider other)
     {
-        ShipsInRange--;
-        Debug.Log($"Trigger Exited, objects: {_shipsInRange}");
-        if (ShipsInRange == 0)
-        {
+        //ShipsInRange--;
+        //Debug.Log($"Trigger Exited, objects: {_shipsInRange}");
+        //if (ShipsInRange == 0)
+        //{
             _weapon.StopShooting();
-        }
+        //}
     }
 }

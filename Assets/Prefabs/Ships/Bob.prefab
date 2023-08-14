@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e6828f81801d84d93ea9435f0ab2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 8000
+  _speed: 10000
   _rotaionSpeed: 40
   _weapons: []
   target: {fileID: 0}
@@ -116,7 +116,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 50
   m_Drag: 10
-  m_AngularDrag: 0
+  m_AngularDrag: 10
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -131,7 +131,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &2713410513618703672
 BoxCollider:
@@ -148,7 +148,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -169,7 +169,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -363,8 +363,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2674998284881558443, guid: af6f442798818d043a688fb5f2be0b52,
         type: 3}
-      propertyPath: m_Layer
-      value: 0
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7452000708408614470, guid: af6f442798818d043a688fb5f2be0b52,
         type: 3}
@@ -389,7 +389,7 @@ PrefabInstance:
     - target: {fileID: 8042853897539470027, guid: af6f442798818d043a688fb5f2be0b52,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 1392
+      value: 1099
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

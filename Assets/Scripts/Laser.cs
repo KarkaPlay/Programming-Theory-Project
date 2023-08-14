@@ -9,18 +9,26 @@ public class Laser : MonoBehaviour
     
     private const float LifeTime = 10f;
     private Rigidbody _rb;
-    public Starship parentShip;
+    public GameObject parentShip;
 
     private void Start()
     {
         StartCoroutine(Destroy());
-        _rb = GetComponent<Rigidbody>();
-        _rb.AddForce(transform.forward * _speed, ForceMode.Impulse);
+        //_rb = GetComponent<Rigidbody>();
+        //_rb.AddForce(transform.forward * _speed, ForceMode.Impulse);
+    }
+
+    private void FixedUpdate()
+    {
+        transform.Translate(Vector3.forward * _speed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision other)
     {
-        Destroy(gameObject);
+        if (other.gameObject != parentShip)
+        {
+            Destroy(gameObject);
+        }
     }
     
     private IEnumerator Destroy()

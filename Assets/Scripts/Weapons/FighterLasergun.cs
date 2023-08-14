@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FighterLasergun : Weapon
+public class FighterLasergun : Weapon // INHERITANCE
 {
     [SerializeField] private Laser _laserPrefab;
     
@@ -14,6 +14,7 @@ public class FighterLasergun : Weapon
     public override void Shoot()
     {
         //Debug.Log("Shoot");
-        Instantiate(_laserPrefab, _firePoint.position, _firePoint.rotation);
+        var laser = Instantiate(_laserPrefab, _firePoint.position, _firePoint.rotation);
+        laser.parentShip = transform.parent.gameObject;
     }
 }
